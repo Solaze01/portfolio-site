@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" href="https://cdn-icons-png.freepik.com/512/9913/9913162.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5 Python Libraries Every Developer Should Know</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Blog Page Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+            transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+
+        body.dark-mode {
+            background-color: #121212;
+            color: #f4f4f4;
+        }
+
+        header {
+            background: linear-gradient(135deg, #007bff, #00d4ff);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Dark Mode Toggle Button */
+        .dark-mode-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .dark-mode-toggle img {
+            width: 30px;
+            height: 30px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .dark-mode-toggle:hover img {
+            transform: scale(1.1);
+        }
+
+        .blog-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .blog-container h1 {
+            color: #007bff;
+        }
+
+        .blog-container p {
+            line-height: 1.8;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .blog-container img {
+            width: 100%;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(135deg, #007bff, #00d4ff);
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, #0056b3, #009acd);
+            transform: scale(1.05);
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode .blog-container {
+            background: #333;
+            color: white;
+        }
+
+        body.dark-mode .blog-container p {
+            color: #ddd;
+        }
+
+        body.dark-mode footer {
+            background: #222;
+        }
+
+        footer {
+            margin-top: 30px;
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+    <h1>My Blog</h1>
+    <nav>
+        <ul>
+            <a href="solaze.html" class="btn">
+                <img src="https://img.icons8.com/ios-filled/50/ffffff/home.png" alt="Home" style="width: 20px; vertical-align: middle; margin-right: 8px;">
+                Home
+            </a>
+            <a href="solaze.html#blog" class="btn">
+                <img src="https://img.icons8.com/ios-filled/50/ffffff/open-book.png" alt="Blog" style="width: 20px; vertical-align: middle; margin-right: 8px;">
+                Blog
+            </a>
+        </ul>
+    </nav>
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()">
+        <img id="darkModeIcon" src="https://img.icons8.com/ios-filled/50/000000/moon.png" alt="Toggle Dark Mode">
+    </button>
+</header>
+
+
+    <div class="blog-container">
+    <h1>5 Python Libraries Every Developer Should Know</h1>
+    <p><strong>Published on:</strong> March 2, 2025</p>
+    <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Python Libraries">
+
+    <p>Python is one of the most powerful and beginner-friendly programming languages. But what makes it truly great is its <strong>rich ecosystem of libraries</strong> that simplify development.</p>
+    
+    <h2>
+        <img src="https://img.icons8.com/ios-filled/24/007bff/pin.png" alt="NumPy" style="width: 20px; vertical-align: middle; margin-right: 8px;">
+        <strong>NumPy - For Numerical Computing</strong>
+    </h2>
+    <p>If you're working with <strong>data, statistics, or machine learning</strong>, NumPy is a must-have. It provides support for large multi-dimensional arrays and matrices.</p>
+    <p><strong>Example:</strong></p>
+    <pre>
+import numpy as np
+arr = np.array([1, 2, 3])
+print(arr * 2)  # Output: [2 4 6]
+    </pre>
+
+    <h2>
+        <img src="https://img.icons8.com/ios-filled/24/007bff/pin.png" alt="Pandas" style="width: 20px; vertical-align: middle; margin-right: 8px;">
+        <strong>Pandas - For Data Analysis</strong>
+    </h2>
+    <p>Pandas makes <strong>handling structured data</strong> extremely easy with its DataFrame object. It’s widely used in <strong>data science and analytics</strong>.</p>
+
+    <h2>
+        <img src="https://img.icons8.com/ios-filled/24/007bff/pin.png" alt="Flask" style="width: 20px; vertical-align: middle; margin-right: 8px;">
+        <strong>Flask - For Web Development</strong>
+    </h2>
+    <p>Flask is a lightweight web framework that allows you to build <strong>powerful web applications</strong> with just a few lines of code.</p>
+
+    <h2>
+        <img src="https://img.icons8.com/ios-filled/24/007bff/pin.png" alt="TensorFlow" style="width: 20px; vertical-align: middle; margin-right: 8px;">
+        <strong>TensorFlow - For Machine Learning</strong>
+    </h2>
+    <p>TensorFlow is an open-source framework used for <strong>deep learning and AI applications</strong>. If you're into AI, you should definitely explore it!</p>
+
+    <h2>
+        <img src="https://img.icons8.com/ios-filled/24/007bff/pin.png" alt="Requests" style="width: 20px; vertical-align: middle; margin-right: 8px;">
+        <strong>Requests - For HTTP Requests</strong>
+    </h2>
+    <p>Need to fetch data from the web? The <strong>Requests</strong> library makes sending HTTP requests in Python effortless.</p>
+
+    <h2>
+        <img src="https://img.icons8.com/ios-filled/24/007bff/rocket.png" alt="Final Thoughts" style="width: 20px; vertical-align: middle; margin-right: 8px;">
+        <strong>Final Thoughts</strong>
+    </h2>
+    <p>These five Python libraries <strong>can boost your development speed</strong> and make complex tasks easier. Try them out and let me know which one is your favorite!</p>
+
+    <a href="https://github.com/yourgithubrepo" class="btn">
+        <img src="https://img.icons8.com/ios-filled/24/ffffff/link.png" alt="GitHub Link" style="width: 20px; vertical-align: middle; margin-right: 8px;">
+        View on GitHub
+    </a>
+</div>
+
+    <footer>
+        <p>&copy; 2025 Ogunade Aderinsola. All rights reserved.</p>
+    </footer>
+
+    <!-- Dark Mode JavaScript -->
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const isDarkMode = document.body.classList.contains('dark-mode');
+
+            // Change icon based on mode
+            let icon = document.getElementById("darkModeIcon");
+            icon.src = isDarkMode
+                ? "https://img.icons8.com/ios-filled/50/ffffff/sun.png"  // Sun for dark mode
+                : "https://img.icons8.com/?size=100&id=0fo75GbrVZoV&format=png&color=000000";  // Moon for light mode
+
+            // Save user preference
+            localStorage.setItem('darkMode', isDarkMode);
+        }
+
+        // Load dark mode preference on page load
+        (function () {
+            let isDarkMode = localStorage.getItem('darkMode') === 'true';
+
+            if (isDarkMode) {
+                document.body.classList.add('dark-mode');
+                document.getElementById("darkModeIcon").src = "https://img.icons8.com/ios-filled/50/ffffff/sun.png";  // Show sun if dark mode is on
+            } else {
+                document.getElementById("darkModeIcon").src = "https://img.icons8.com/?size=100&id=0fo75GbrVZoV&format=png&color=000000";  // Show moon if light mode is on
+            }
+        })();
+    </script>
+
+</body>
+</html>

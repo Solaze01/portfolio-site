@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" href="https://cdn-icons-png.freepik.com/512/9913/9913162.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ogunade Aderinsola - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* General Styles */
+        * {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+            transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+        body.dark-mode {
+            background-color: #121212;
+            color: #f4f4f4;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(135deg, #007bff, #00d4ff);
+            color: white;
+            padding: 20px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #ffeb3b;
+        }
+
+        .hero {
+            padding: 60px 20px;
+        }
+        .hero img {
+            width: 160px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        /* About Me */
+        .about-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            text-align: left;
+        }
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .skill {
+            background: white;
+            padding: 8px 16px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            font-weight: bold;
+        }
+        .dark-mode .skill {
+            background: #333;
+        }
+
+        /* Projects - Grid Layout */
+        #projects {
+            padding: 40px 20px;
+        }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+        .project {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+        .project:hover {
+            transform: scale(1.05);
+        }
+        .dark-mode .project {
+            background: #333;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(135deg, #007bff, #00d4ff);
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .btn:hover {
+            background: linear-gradient(135deg, #0056b3, #009acd);
+            transform: scale(1.05);
+        }
+
+        /* Dark Mode Toggle */
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .toggle-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .toggle-button img {
+            width: 30px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ogunade Aderinsola</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="toggle-container">
+            <button class="toggle-button" onclick="toggleDarkMode()">
+                <img id="darkModeIcon" src="https://img.icons8.com/?size=100&id=0fo75GbrVZoV&format=png&color=000000" alt="Dark Mode Toggle">
+            </button>
+        </div>
+    </header>
+    
+    <section class="hero">
+    <img src="new taker.jpg" alt="Profile Picture">
+    <p id="greeting" style="font-size: 20px; font-weight: bold; margin-bottom: 10px;"></p>
+    <h2>Welcome to My Portfolio</h2>
+    <p>I build engaging Telegram bots using Python. Let’s create something amazing together!</p>
+</section>
+
+<script>
+    function updateGreeting() {
+        let hours = new Date().getHours();
+        let greetingText = "";
+
+        if (hours < 12) greetingText = "Good Morning!";
+        else if (hours < 18) greetingText = "Good Afternoon!";
+        else greetingText = "Good Evening!";
+
+        document.getElementById("greeting").innerText = greetingText;
+    }
+
+    updateGreeting(); // Call the function when the page loads
+</script>
+
+    
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="about-container">
+            <p>Hi, I'm <strong>Ogunade Aderinsola</strong>, a passionate Telegram bot developer with a strong background in Python.</p>
+            <p>I specialize in building <strong>interactive and automated solutions</strong> that enhance user experiences on Telegram.</p>
+            <p>Over the years, I have developed multiple bots that <strong>simplify tasks, provide real-time updates, and engage users</strong> through games and challenges.</p>
+            <!-- Skills Section -->
+<!-- Skills Section -->
+<div class="skills-section">
+    <h3>Skills</h3>
+    <div class="skills-container">
+        <div class="skill-card">
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/python.png" alt="Python" style="width: 24px; vertical-align: middle; margin-right: 8px;">
+            Python
+        </div>
+        <div class="skill-card">
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/robot-2.png" alt="Telegram Bot API" style="width: 24px; vertical-align: middle; margin-right: 8px;">
+            Telegram Bot API
+        </div>
+        <div class="skill-card">
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/process.png" alt="Automation" style="width: 24px; vertical-align: middle; margin-right: 8px;">
+            Automation
+        </div>
+        <div class="skill-card">
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/internet.png" alt="Web Development" style="width: 24px; vertical-align: middle; margin-right: 8px;">
+            Web Development
+        </div>
+    </div>
+    <a href="#projects" class="btn">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/rocket.png" alt="View My Projects" style="width: 20px; vertical-align: middle; margin-right: 8px;">
+        View My Projects
+    </a>
+</div>
+
+<!-- Styles for Skills Section -->
+<style>
+    .skills-section {
+        text-align: center;
+        margin: 40px auto;
+        max-width: 800px;
+        padding: 20px;
+    }
+
+    .skills-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 10px;
+    }
+
+    .skill-card {
+        background: linear-gradient(135deg, #007bff, #00d4ff);
+        color: white;
+        padding: 12px 20px;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: bold;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+        display: flex;
+        align-items: center;
+    }
+
+    .skill-card img {
+        margin-right: 8px;
+    }
+
+    .skill-card:hover {
+        transform: scale(1.1);
+    }
+
+    /* Dark Mode Support */
+    .dark-mode .skill-card {
+        background: #333;
+        color: white;
+    }
+</style>
+
+
+
+
+    <h2>Projects</h2>
+    <div class="project-grid">
+        
+        <!-- Solaze Bot -->
+        <div class="project">
+            <img src="https://cdn4.cdn-telegram.org/file/gvmsmGdUALrQ7x0zOBWNTfihhGmqRRBkeuc37Kko4eQMsQMMP5OUWQvwzrNiWTeV-VI5RwGsxqjvZksXNrGMxOqT3wcv9Y7SAvr4UnrjlAEm6swEoWU-VLbt3W3Dq5xbAkDleNWMkJjEfIcENFOXtmXbn3pfqBg_2Z-1Gr5oTIdh31cV1spHMSC0EK83C9wTNlZknbGovJjU-a9FefKNUOdE_vI61UawrT44otShpXJZ6ydRKfZiilk3Wq-oRrG-RwqxBNSkUyhVrSYMrIP8LAyJvJuLJ9ZhqyToh21_mEJ4VtMDdbDQy20LaHeqxIBcu7T-vST-utAiMeKz0q9sBg.jpg" alt="Solaze Bot">
+            <div class="project-info">
+                <h3>Solaze Bot</h3>
+                <p>An interactive Telegram bot that provides entertainment, news, and games.</p>
+                <a href="#" class="btn">View on GitHub</a>
+            </div>
+        </div>
+
+        <!-- Exampilot -->
+        <div class="project">
+            <img src="https://cdn4.cdn-telegram.org/file/Q3SkDGUrgXcxhk77H9_q7vrpD3dljoe-5ZxSwgdpjX6g8IAVXnzINrL8qtpnOLsF3Rv1j6HlrpJu148QLC9-JZ6dBkg1ttYyaQVBcOhH2hTRga1DL_m56-BZBz47GaaCgPoT408NGwXkymlr8Vt5UB5BxPt5AOha62imCTboqkZUrLyAzB46Z3-JzFjTuGynDtSjApZbLxbEsyAtiOIZFgfo1IeaiBnNSmalIumsqI20ryaKzBoHVOOgKAhA8bZfHwBkqIBY6lwCFjP2tK0jx6bbdoiHemUfJXaS27BfBXZ0ywGgzASVhtQExQJATGdUEuKOo_X87IwO20KpiXXvAQ.jpg" alt="Exampilot">
+            <div class="project-info">
+                <h3>Exampilot</h3>
+                <p>A Telegram bot that helps students prepare for exams with quizzes, study tips, and past questions.</p>
+                <a href="#" class="btn">View on GitHub</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<style>
+    /* Grid Layout */
+    .project-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        padding: 20px;
+    }
+
+    /* Project Card */
+    .project {
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        text-align: center;
+    }
+
+    /* Square Image */
+    .project img {
+        width: 100%;        /* Makes the image fill the container */
+        height: 300px;      /* Set a fixed height for square shape */
+        object-fit: cover;  /* Ensures image covers the area */
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    /* Project Info */
+    .project-info {
+        padding: 15px;
+    }
+
+    .project h3 {
+        margin-top: 0;
+        color: #333;
+    }
+
+    .project p {
+        color: #666;
+        font-size: 14px;
+    }
+
+    /* Button Styling */
+    .btn {
+        display: inline-block;
+        padding: 10px 15px;
+        margin-top: 10px;
+        background: linear-gradient(135deg, #007bff, #00d4ff);
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background 0.3s ease-in-out;
+    }
+
+    .btn:hover {
+        background: linear-gradient(135deg, #0056b3, #0099cc);
+    }
+
+    /* Hover Effects */
+    .project:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+</style>
+
+
+<!-- Testimonials Section -->
+<section id="testimonials">
+    <h2>What People Say</h2>
+    <div class="testimonial-container">
+        <div class="testimonial-card">
+            <p>"Solaze Bot is a game-changer! It keeps me updated with news and fun games!"</p>
+            <h4>- Alex, Telegram User</h4>
+        </div>
+        <div class="testimonial-card">
+            <p>"Exampilot helped me prepare for my exams like never before! Highly recommended!"</p>
+            <h4>- Sarah, Student</h4>
+        </div>
+        <div class="testimonial-card">
+            <p>"Fast, responsive, and intuitive bots! Love the work!"</p>
+            <h4>- John, Developer</h4>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Styles -->
+<style>
+    #testimonials {
+        text-align: center;
+        padding: 50px 20px;
+        background: #f9f9f9;
+    }
+
+    .testimonial-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .testimonial-card {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        max-width: 300px;
+        transition: transform 0.3s ease-in-out;
+        display: none; /* Hide all initially for slider effect */
+    }
+
+    .testimonial-card:hover {
+        transform: scale(1.05);
+    }
+
+    .testimonial-card p {
+        font-style: italic;
+        color: #555;
+    }
+
+    .testimonial-card h4 {
+        margin-top: 10px;
+        font-weight: bold;
+        color: #007bff;
+    }
+
+    /* Dark Mode Support */
+    .dark-mode #testimonials {
+        background: #1e1e1e;
+    }
+
+    .dark-mode .testimonial-card {
+        background: #333;
+        color: white;
+    }
+
+    .dark-mode .testimonial-card p {
+        color: #ddd;
+    }
+</style>
+
+<!-- Testimonials Slider Script -->
+<script>
+    let currentTestimonial = 0;
+    const testimonials = document.querySelectorAll(".testimonial-card");
+
+    function showTestimonial(index) {
+        testimonials.forEach((t, i) => {
+            t.style.display = i === index ? "block" : "none";
+        });
+    }
+
+    function nextTestimonial() {
+        currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+        showTestimonial(currentTestimonial);
+    }
+
+    setInterval(nextTestimonial, 6000); // Change every 3 seconds
+    showTestimonial(currentTestimonial);
+</script>
+
+    
+   <!-- Contact Section -->
+<section id="contact">
+    <h2>Get In Touch</h2>
+    <p>Let's build something amazing together! Reach out to me through any of the platforms below.</p>
+
+    <div class="contact-container">
+        <div class="contact-card">
+            <img src="https://img.icons8.com/ios-filled/50/007bff/gmail.png" alt="Email">
+            <h4>Email</h4>
+            <p>your-email@example.com</p>
+            <a href="mailto:your-email@example.com" class="btn">Send Email</a>
+        </div>
+
+        <div class="contact-card">
+            <img src="https://img.icons8.com/ios-filled/50/007bff/telegram.png" alt="Telegram">
+            <h4>Telegram</h4>
+            <p>@yourtelegram</p>
+            <a href="https://t.me/yourtelegram" class="btn">Message Me</a>
+        </div>
+
+        <div class="contact-card">
+            <img src="https://img.icons8.com/ios-filled/50/007bff/linkedin.png" alt="LinkedIn">
+            <h4>LinkedIn</h4>
+            <p>linkedin.com/in/yourprofile</p>
+            <a href="https://linkedin.com/in/yourprofile" class="btn">Connect</a>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section Styles -->
+<style>
+    #contact {
+        text-align: center;
+        padding: 50px 20px;
+        background: #f4f4f4;
+    }
+
+    .contact-container {
+    display: flex;
+    justify-content: center; /* Aligns items properly */
+    gap: 20px;
+}
+
+
+    .contact-card {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        width: 250px;
+        text-align: center;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .contact-card:hover {
+        transform: scale(1.05);
+    }
+
+    .contact-card img {
+        width: 50px;
+        margin-bottom: 10px;
+    }
+
+    .contact-card h4 {
+        margin: 10px 0;
+        color: #007bff;
+    }
+
+    .contact-card p {
+        color: #555;
+        margin-bottom: 15px;
+    }
+
+    /* Dark Mode Support */
+    .dark-mode #contact {
+        background: #1e1e1e;
+        color: white;
+    }
+
+    .dark-mode .contact-card {
+        background: #333;
+        color: white;
+    }
+
+    .dark-mode .contact-card p {
+        color: #ddd;
+    }
+</style>
+
+<!-- Blog Section -->
+<section id="blog">
+    <h2>Blog</h2>
+    <div class="blog-container">
+        <!-- Blog Post 1 -->
+        <div class="blog-post">
+            <img src="https://images.unsplash.com/photo-1636743091340-af4ee8147080?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="How I Built My First Telegram Bot">
+            <h3>How I Built My First Telegram Bot</h3>
+            <p>Building my first Telegram bot was a thrilling experience. I used Python and the Telegram Bot API to...</p>
+            <a href="blog1.html" class="btn">Read More</a>
+        </div>
+
+        <!-- Blog Post 2 -->
+        <div class="blog-post">
+            <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="5 Python Libraries Every Developer Should Know">
+            <h3>5 Python Libraries Every Developer Should Know</h3>
+            <p>Python has tons of libraries, but here are five that made my development journey easier...</p>
+            <a href="blog2.html" class="btn">Read More</a>
+        </div>
+
+        <!-- Blog Post 3 -->
+        <div class="blog-post">
+            <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Why Telegram Bots Are the Future">
+            <h3>Why Telegram Bots Are the Future</h3>
+            <p>From automation to business solutions, Telegram bots are becoming a game-changer. Here’s why...</p>
+            <a href="blog3.html" class="btn">Read More</a>
+        </div>
+    </div>
+</section>
+
+<!-- Blog Styles -->
+<style>
+    #blog {
+        text-align: center;
+        padding: 60px 20px;
+        background: #f9f9f9;
+    }
+
+.blog-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    align-items: center; /* Keeps images and text aligned */
+}
+
+.blog-post {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 400px; /* Increased width */
+    text-align: left;
+    transition: transform 0.3s ease-in-out;
+}
+
+.blog-post img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.blog-post h3 {
+    font-size: 22px;
+    color: #007bff;
+    margin-top: 10px;
+}
+
+.blog-post p {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Ensure responsiveness */
+@media screen and (max-width: 900px) {
+    .blog-container {
+        flex-wrap: wrap; /* Allows wrapping on smaller screens */
+        justify-content: center;
+    }
+
+    .blog-post {
+        width: 90%; /* Makes posts stack on smaller screens */
+    }
+
+    .blog-post img {
+        height: 250px; /* Adjusts image size for smaller screens */
+    }
+}
+
+
+    /* Dark Mode Support */
+    .dark-mode #blog {
+        background: #1e1e1e;
+    }
+
+    .dark-mode .blog-post {
+        background: #333;
+        color: white;
+    }
+
+    .dark-mode .blog-post p {
+        color: #ddd;
+    }
+</style>
+    
+    <footer>
+        <p>&copy; 2025 Ogunade Aderinsola. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            let icon = document.getElementById('darkModeIcon');
+            icon.src = document.body.classList.contains('dark-mode') 
+                ? "https://img.icons8.com/?size=100&id=6Z2mGj6qDVv4&format=png&color=000000"
+                : "https://img.icons8.com/?size=100&id=0fo75GbrVZoV&format=png&color=000000";
+        }
+    </script>
+<!-- Back to Top Button -->
+<button id="backToTop" onclick="scrollToTop()">⬆ Back to Top</button>
+
+<!-- Back to Top Button Styles -->
+<style>
+    /* Back to Top Button */
+    #backToTop {
+        position: fixed;
+        bottom: 20px;
+        right: 120px; /* Moved further left */
+        display: none; /* Hidden by default */
+        background: linear-gradient(135deg, #007bff, #00d4ff);
+        color: white;
+        border: none;
+        padding: 12px 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: opacity 0.3s, transform 0.3s;
+    }
+
+    #backToTop:hover {
+        background: linear-gradient(135deg, #0056b3, #009acd);
+        transform: scale(1.1);
+    }
+
+    /* Ensure no overlap on smaller screens */
+    @media screen and (max-width: 600px) {
+        #backToTop {
+            right: 100px; /* Adjust further on mobile */
+        }
+    }
+
+    /* Dark Mode Support */
+    .dark-mode #backToTop {
+        background: linear-gradient(135deg, #444, #222);
+    }
+</style>
+
+<!-- Back to Top Button Script -->
+<script>
+    // Show the button when scrolling down
+    window.onscroll = function() {
+        let button = document.getElementById("backToTop");
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+            button.style.display = "block";
+        } else {
+            button.style.display = "none";
+        }
+    };
+
+    // Scroll smoothly to the top when clicked
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    }
+</script>
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot with Minimize Feature</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Chatbot Styles */
+        #chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 320px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            font-family: 'Poppins', sans-serif;
+            display: none; /* Initially hidden */
+            flex-direction: column;
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        }
+        #chatbot-header {
+            background: linear-gradient(135deg, #007bff, #00d4ff);
+            color: white;
+            padding: 12px;
+            text-align: center;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #chatbot-toggle {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #chatbot-content {
+            display: block;
+            height: 300px;
+            padding: 10px;
+        }
+        #chatbot-messages {
+            height: 250px;
+            padding: 10px;
+            overflow-y: auto;
+            font-size: 14px;
+        }
+        #chatbot-input {
+            border: none;
+            padding: 12px;
+            width: 100%;
+            outline: none;
+            font-size: 14px;
+            border-top: 1px solid #ddd;
+        }
+        /* Floating Button */
+        #chatbot-open-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #007bff, #00d4ff);
+            color: white;
+            border: none;
+            padding: 12px 16px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            display: block; /* Initially shown */
+        }
+
+        /* Dark Mode Chatbot */
+        .dark-mode #chatbot-container {
+            background: #1e1e1e;
+            color: white;
+            box-shadow: 0 4px 10px rgba(255,255,255,0.1);
+        }
+        .dark-mode #chatbot-header {
+            background: linear-gradient(135deg, #444, #222);
+        }
+        .dark-mode #chatbot-input {
+            background: #333;
+            color: white;
+            border-top: 1px solid #444;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Chatbot UI -->
+<div id="chatbot-container">
+    <div id="chatbot-header">
+        💬 Ask Me Anything
+        <button onclick="toggleChatbot()" id="chatbot-toggle">⬇️</button>
+    </div>
+    <div id="chatbot-content">
+        <div id="chatbot-messages"></div>
+        <input type="text" id="chatbot-input" placeholder="Ask me about my projects..." onkeypress="handleChat(event)">
+    </div>
+</div>
+
+<!-- Floating Button to Open Chat -->
+<button id="chatbot-open-btn" onclick="toggleChatbot()">💬</button>
+
+<!-- JavaScript -->
+<script>
+    const knowledgeBase = {
+        "hello": "Hey there! Feel free to ask me about my skills, projects, or how to contact me. 😊",
+        "hi": "Hello! How can I assist you today? 🚀",
+        "what do you do": "I specialize in building Telegram bots using Python. ⚡",
+        "tell me about your projects": "Sure! One of my main projects is 'Solaze Bot', an interactive Telegram bot for entertainment, news, and games.",
+        "what skills do you have": "I have expertise in Python, Telegram Bot API, Web Development, and Automation. 🔥",
+        "how can I contact you": "You can email me at your-email@example.com or reach me on Telegram at @yourtelegram."
+    };
+
+    function handleChat(event) {
+        if (event.key === "Enter") {
+            let userInput = event.target.value.trim();
+            if (!userInput) return;
+
+            let chatbox = document.getElementById("chatbot-messages");
+
+            // Display user input
+            let userMessage = document.createElement("p");
+            userMessage.innerHTML = `<strong>You:</strong> ${userInput}`;
+            chatbox.appendChild(userMessage);
+
+            // Get bot response
+            let botResponseText = findBestMatch(userInput);
+
+            // Display bot response
+            let botMessage = document.createElement("p");
+            botMessage.innerHTML = `<strong>AI:</strong> ${botResponseText}`;
+            chatbox.appendChild(botMessage);
+
+            // Auto-scroll chat
+            chatbox.scrollTop = chatbox.scrollHeight;
+
+            // Clear input
+            event.target.value = "";
+        }
+    }
+
+    function findBestMatch(input) {
+        input = input.toLowerCase();
+
+        for (let key in knowledgeBase) {
+            if (input.includes(key)) return knowledgeBase[key];
+        }
+
+        return "Hmm... I’m not sure, but try asking about my work, skills, or how to reach me. 😊";
+    }
+
+    function toggleChatbot() {
+        let chatbot = document.getElementById("chatbot-container");
+        let openBtn = document.getElementById("chatbot-open-btn");
+
+        if (chatbot.style.display === "none" || chatbot.style.display === "") {
+            chatbot.style.display = "flex"; // Show chatbot
+            openBtn.style.display = "none"; // Hide floating button
+        } else {
+            chatbot.style.display = "none"; // Hide chatbot
+            openBtn.style.display = "block"; // Show floating button
+        }
+    }
+</script>
+
+</body>
+</html>
+
+</body>
+</html>
+
