@@ -735,59 +735,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatbot with Minimize Feature</title>
+    <title>Stylish Chatbot with Dark Mode</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Chatbot Styles */
+        /* Chatbot Container */
         #chatbot-container {
             position: fixed;
             bottom: 20px;
             right: 20px;
             width: 320px;
+            max-height: 500px;
             background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
             font-family: 'Poppins', sans-serif;
             display: none; /* Initially hidden */
             flex-direction: column;
+            overflow: hidden;
             transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            z-index: 999;
         }
+
+        /* Header Style */
         #chatbot-header {
             background: linear-gradient(135deg, #007bff, #00d4ff);
             color: white;
             padding: 12px;
-            text-align: center;
-            font-weight: bold;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            font-weight: bold;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
         }
+
+        /* Toggle Button */
         #chatbot-toggle {
             background: none;
             border: none;
             color: white;
-            font-size: 16px;
+            font-size: 18px;
             cursor: pointer;
         }
+
+        /* Content Area */
         #chatbot-content {
-            display: block;
-            height: 300px;
-            padding: 10px;
-        }
-        #chatbot-messages {
-            height: 250px;
+            display: flex;
+            flex-direction: column;
+            height: 320px;
             padding: 10px;
             overflow-y: auto;
-            font-size: 14px;
+            background-color: white;
         }
+
+        /* Message Box */
+        #chatbot-messages {
+            flex-grow: 1;
+            padding: 10px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        /* Input Field and Send Button */
+        #chatbot-input-container {
+            display: flex;
+            border-top: 1px solid #ddd;
+            padding: 8px;
+            align-items: center;
+            background-color: #f1f1f1;
+        }
+
         #chatbot-input {
+            flex: 1;
             border: none;
-            padding: 12px;
-            width: 100%;
+            padding: 10px;
+            border-radius: 20px;
             outline: none;
             font-size: 14px;
-            border-top: 1px solid #ddd;
+            background-color: white;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-right: 8px;
         }
+
+        #chatbot-send-btn {
+            background-color: #007bff;
+            border: none;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background 0.3s;
+        }
+
+        #chatbot-send-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Message Bubbles */
+        .message {
+            max-width: 80%;
+            padding: 8px 12px;
+            border-radius: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            line-height: 1.4;
+            font-size: 14px;
+        }
+
+        .user-message {
+            background-color: #007bff;
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 0;
+        }
+
+        .bot-message {
+            background-color: #f1f1f1;
+            color: #333;
+            align-self: flex-start;
+            border-bottom-left-radius: 0;
+        }
+
+        /* Typing Indicator */
+        #typing-indicator {
+            font-size: 14px;
+            color: #ffeb3b;
+            padding-left: 8px;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Quick Reply Buttons */
+        #quick-replies {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 5px;
+            padding: 10px 5px;
+            background-color: #f9f9f9;
+            border-bottom: 1px solid #ddd;
+        }
+
+        #quick-replies button {
+            flex: 1;
+            min-width: 70px;
+            padding: 6px;
+            margin: 2px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background 0.3s;
+        }
+
+        #quick-replies button:hover {
+            background-color: #0056b3;
+        }
+
         /* Floating Button */
         #chatbot-open-btn {
             position: fixed;
@@ -800,23 +912,33 @@
             border-radius: 50%;
             cursor: pointer;
             font-size: 20px;
-            display: block; /* Initially shown */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
-        /* Dark Mode Chatbot */
+        /* Dark Mode Support */
         .dark-mode #chatbot-container {
             background: #1e1e1e;
             color: white;
-            box-shadow: 0 4px 10px rgba(255,255,255,0.1);
         }
+        
+        .dark-mode #chatbot-content {
+            background: #333;
+        }
+        
+        .dark-mode #chatbot-input {
+            background: #555;
+            color: white;
+        }
+        
+        .dark-mode .bot-message {
+            background-color: #555;
+            color: white;
+        }
+        
         .dark-mode #chatbot-header {
             background: linear-gradient(135deg, #444, #222);
         }
-        .dark-mode #chatbot-input {
-            background: #333;
-            color: white;
-            border-top: 1px solid #444;
-        }
+
     </style>
 </head>
 <body>
@@ -824,9 +946,97 @@
 <!-- Chatbot UI -->
 <div id="chatbot-container">
     <div id="chatbot-header">
-        💬 Ask Me Anything
+        💬 Ask Me Anything 
+        <span id="typing-indicator" style="display:none;">🤖 Typing...</span>
         <button onclick="toggleChatbot()" id="chatbot-toggle">⬇️</button>
     </div>
+
+    <div id="quick-replies">
+        <button onclick="handleQuickReply('Projects')">Projects</button>
+        <button onclick="handleQuickReply('Skills')">Skills</button>
+        <button onclick="handleQuickReply('Contact')">Contact</button>
+        <button onclick="handleQuickReply('About Me')">About Me</button>
+    </div>
+
+    <div id="chatbot-content">
+        <div id="chatbot-messages"></div>
+    </div>
+
+    <div id="chatbot-input-container">
+        <input type="text" id="chatbot-input" placeholder="Type a message..." onkeypress="handleChat(event)">
+        <button id="chatbot-send-btn" onclick="sendMessage()">➤</button>
+    </div>
+</div>
+
+<button id="chatbot-open-btn" onclick="toggleChatbot()">💬</button>
+
+<script>
+    function handleChat(event) {
+        if (event.key === "Enter") sendMessage();
+    }
+
+    function sendMessage() {
+        const inputField = document.getElementById("chatbot-input");
+        const userInput = inputField.value.trim();
+        if (!userInput) return;
+
+        addMessage(userInput, "user-message");
+        document.getElementById("typing-indicator").style.display = "inline";
+
+        setTimeout(() => {
+            const botResponse = `You asked about "${userInput}"!`;
+            addMessage(botResponse, "bot-message");
+            document.getElementById("typing-indicator").style.display = "none";
+        }, 1000);
+
+        inputField.value = "";
+    }
+
+    function addMessage(text, className) {
+        const chatbox = document.getElementById("chatbot-messages");
+        const message = document.createElement("div");
+        message.className = `message ${className}`;
+        message.innerText = text;
+        chatbox.appendChild(message);
+        chatbox.scrollTop = chatbox.scrollHeight;
+    }
+
+    function handleQuickReply(message) {
+        document.getElementById("chatbot-input").value = message;
+        sendMessage();
+    }
+
+    function toggleChatbot() {
+        const chatbot = document.getElementById("chatbot-container");
+        chatbot.style.display = chatbot.style.display === "none" ? "flex" : "none";
+        document.getElementById("chatbot-open-btn").style.display = chatbot.style.display === "none" ? "block" : "none";
+    }
+</script>
+
+</body>
+</html>
+
+</head>
+<body>
+
+<!-- Chatbot UI -->
+<div id="chatbot-container">
+    <div id="chatbot-header">
+        💬 Ask Me Anything
+        <span id="typing-indicator" style="display:none; margin-left: 10px; color: #ffeb3b;">
+            🤖 Typing...
+        </span>
+        <button onclick="toggleChatbot()" id="chatbot-toggle">⬇️</button>
+    </div>
+    
+    <!-- Quick Reply Buttons (Moved Up) -->
+    <div id="quick-replies">
+        <button onclick="handleQuickReply('Tell me about your projects')">Projects</button>
+        <button onclick="handleQuickReply('What skills do you have?')">Skills</button>
+        <button onclick="handleQuickReply('How can I contact you?')">Contact</button>
+        <button onclick="handleQuickReply('About you')">About Me</button>
+    </div>
+    
     <div id="chatbot-content">
         <div id="chatbot-messages"></div>
         <input type="text" id="chatbot-input" placeholder="Ask me about my projects..." onkeypress="handleChat(event)">
@@ -836,15 +1046,79 @@
 <!-- Floating Button to Open Chat -->
 <button id="chatbot-open-btn" onclick="toggleChatbot()">💬</button>
 
+<!-- Styles for Quick Replies and Typing Indicator -->
+<style>
+    /* Quick Reply Buttons */
+    #quick-replies {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+        padding: 10px 5px;
+        background-color: #f1f1f1;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    #quick-replies button {
+        flex: 1;
+        min-width: 70px;
+        padding: 6px;
+        margin: 2px;
+        border: none;
+        background-color: #007bff;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 12px;
+        transition: background 0.3s;
+    }
+    
+    #quick-replies button:hover {
+        background-color: #0056b3;
+    }
+    
+    /* Typing Indicator Animation */
+    #typing-indicator {
+        animation: blink 1s infinite;
+        font-weight: bold;
+        font-size: 14px;
+    }
+    
+    @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+    }
+
+    /* Adjusted Chatbot Content Height */
+    #chatbot-content {
+        display: block;
+        height: 240px; /* Reduced height to accommodate quick reply buttons */
+        padding: 10px;
+    }
+    
+    #chatbot-messages {
+        height: 200px; /* Reduced to fit all elements */
+        padding: 10px;
+        overflow-y: auto;
+        font-size: 14px;
+    }
+</style>
+
 <!-- JavaScript -->
 <script>
     const knowledgeBase = {
         "hello": "Hey there! Feel free to ask me about my skills, projects, or how to contact me. 😊",
         "hi": "Hello! How can I assist you today? 🚀",
+        "good morning": "Good morning! Ready to learn about my projects and skills? ☀️",
         "what do you do": "I specialize in building Telegram bots using Python. ⚡",
-        "tell me about your projects": "Sure! One of my main projects is 'Solaze Bot', an interactive Telegram bot for entertainment, news, and games.",
-        "what skills do you have": "I have expertise in Python, Telegram Bot API, Web Development, and Automation. 🔥",
-        "how can I contact you": "You can email me at your-email@example.com or reach me on Telegram at @yourtelegram."
+        "tell me about your projects": "My projects include 'Solaze Bot' for entertainment and 'Exampilot' for exam preparation.",
+        "what skills do you have": "I am skilled in Python, Telegram Bot API, Web Development, and Automation. 🔥",
+        "how can I contact you": "You can email me at your-email@example.com or reach me on Telegram at @yourtelegram.",
+        "about you": "I'm Ogunade Aderinsola, a passionate Telegram bot developer with expertise in Python.",
+        "projects": "I've developed 'Solaze Bot' and 'Exampilot' to enhance user experiences on Telegram.",
+        "testimonials": "People say great things! Solaze Bot is a game-changer, and Exampilot is perfect for students.",
+        "blog": "I write about my experiences with Telegram bots, Python libraries, and the future of bots.",
+        "contact": "You can reach me via email at your-email@example.com, on Telegram @yourtelegram, or on LinkedIn at linkedin.com/in/yourprofile."
     };
 
     function handleChat(event) {
@@ -853,34 +1127,58 @@
             if (!userInput) return;
 
             let chatbox = document.getElementById("chatbot-messages");
+            let typingIndicator = document.getElementById("typing-indicator");
 
             // Display user input
             let userMessage = document.createElement("p");
             userMessage.innerHTML = `<strong>You:</strong> ${userInput}`;
             chatbox.appendChild(userMessage);
 
-            // Get bot response
-            let botResponseText = findBestMatch(userInput);
+            // Show typing indicator in the header
+            typingIndicator.style.display = "inline";
 
-            // Display bot response
-            let botMessage = document.createElement("p");
-            botMessage.innerHTML = `<strong>AI:</strong> ${botResponseText}`;
-            chatbox.appendChild(botMessage);
+            setTimeout(() => {
+                // Get bot response
+                let botResponseText = findBestMatch(userInput);
 
-            // Auto-scroll chat
-            chatbox.scrollTop = chatbox.scrollHeight;
+                // Display bot response
+                let botMessage = document.createElement("p");
+                botMessage.innerHTML = `<strong>Finn:</strong> ${botResponseText}`;
+                chatbox.appendChild(botMessage);
+
+                // Hide typing indicator
+                typingIndicator.style.display = "none";
+
+                // Auto-scroll chat
+                chatbox.scrollTop = chatbox.scrollHeight;
+            }, 1000); // Simulate a 1-second typing delay
 
             // Clear input
             event.target.value = "";
         }
     }
 
+    function handleQuickReply(message) {
+        let inputField = document.getElementById("chatbot-input");
+        inputField.value = message;
+        handleChat({ key: "Enter", target: inputField });
+    }
+
     function findBestMatch(input) {
         input = input.toLowerCase();
 
-        for (let key in knowledgeBase) {
-            if (input.includes(key)) return knowledgeBase[key];
+        const greetings = ["hello", "hi", "good morning", "good afternoon", "good evening"];
+        if (greetings.some(greeting => input.includes(greeting))) {
+            return "Hey there! How can I assist you today? 😊";
         }
+
+        if (input.includes("about")) return knowledgeBase["about you"];
+        if (input.includes("skills")) return knowledgeBase["what skills do you have"];
+        if (input.includes("projects")) return knowledgeBase["tell me about your projects"];
+        if (input.includes("testimonials")) return knowledgeBase["testimonials"];
+        if (input.includes("blog")) return knowledgeBase["blog"];
+        if (input.includes("contact")) return knowledgeBase["contact"];
+        if (input.includes("what do you do")) return knowledgeBase["what do you do"];
 
         return "Hmm... I’m not sure, but try asking about my work, skills, or how to reach me. 😊";
     }
@@ -898,6 +1196,8 @@
         }
     }
 </script>
+
+
 
 </body>
 </html>
